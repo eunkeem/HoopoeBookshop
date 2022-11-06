@@ -19,13 +19,14 @@
 
 
             <ImageView
-                android:id="@+id/imv_item_main"
+                android:id="@+id/imv_book_item_main"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:adjustViewBounds="true"
                 android:maxHeight="160dp"
                 app:srcCompat="@drawable/img_item_main" />
+
 
             <TextView
                 android:id="@+id/tv_sub_item_main"
@@ -34,27 +35,46 @@
                 android:text="제목"
                 android:textSize="23sp"
                 android:textStyle="bold"
-                android:layout_alignTop="@id/imv_item_main"
-                android:layout_toRightOf="@id/imv_item_main"
+                android:layout_alignTop="@id/imv_book_item_main"
+                android:layout_toRightOf="@id/imv_book_item_main"
                 android:layout_marginLeft="50dp"/>
+
+            <ImageView
+                android:id="@+id/imv_delete_item_main"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_shopping_cart"
+                android:layout_alignBottom="@+id/tv_sub_item_main"
+                android:layout_alignEnd="@id/tv_publisher_item_main"
+                />
+
+            <TextView
+                android:id="@+id/tv_price_item_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="가격"
+                android:layout_below="@+id/tv_sub_item_main"
+                android:layout_toRightOf="@id/imv_book_item_main"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="30dp"/>
 
             <TextView
                 android:id="@+id/tv_author_item_main"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
-                android:layout_below="@+id/tv_sub_item_main"
-                android:layout_toRightOf="@id/imv_item_main"
+                android:text="저자"
+                android:layout_below="@+id/tv_price_item_main"
+                android:layout_toRightOf="@id/imv_book_item_main"
                 android:layout_marginLeft="50dp"
-                android:layout_marginTop="90dp"/>
+                android:layout_marginTop="40dp"/>
             <TextView
                 android:id="@+id/tv_publisher_item_main"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
+                android:text="출판사"
                 android:layout_alignTop="@id/tv_author_item_main"
                 android:layout_alignParentEnd="true"
-                android:layout_marginRight="10dp" />
+                android:layout_marginRight="20dp" />
 
 
         </RelativeLayout>
