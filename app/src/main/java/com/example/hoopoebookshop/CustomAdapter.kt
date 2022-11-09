@@ -30,6 +30,7 @@ class CustomAdapter(val dataList: MutableList<DAtaVO>) :
         customViewHolder.itemView.setOnLongClickListener{
             val position:Int =  customViewHolder.bindingAdapterPosition
             val dataVO = dataList.get(position)
+//            CustomDeleteDialog(binding.root.context, dataList).showDialog()
             (parent.context as MainActivity).firstFragment.refreshRecyclerviewDrop(dataVO)
             true
         }
@@ -47,15 +48,8 @@ class CustomAdapter(val dataList: MutableList<DAtaVO>) :
         binding.tvAuthorItemMain.text = dataVO.author
         binding.tvPublisherItemMain.text = dataVO.publisher
 
-        // 이미지 눌렀을때 장바구니 혹은 삭제 기능 만들려고...
-//        val listPosition = dataList[position]
-//        holder.binding.dataText.text = listPosition.text
-//        holder.binding.imvDeleteItemMain.setOnClickListener{
-//            onClickDeleteIcon.invoke(listPosition)
-//        }
-
     }
 
-    class CustomViewHolder(val binding: ItemMainBinding) : RecyclerView.ViewHolder(binding.root)
-
+    class CustomViewHolder(val binding: ItemMainBinding) : RecyclerView.ViewHolder(binding.root){
+    }
 }
