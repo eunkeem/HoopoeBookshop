@@ -18,27 +18,17 @@
         android:textSize="20dp"
         android:textStyle="bold" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_alignBottom="@+id/tv_navi_header"
-        android:layout_alignParentEnd="true"
-        app:srcCompat="@drawable/ic_navi_header" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal">
 
-
-       <com.google.android.material.tabs.TabLayout
-           android:id="@+id/tablayou_navi_header"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:backgroundTint="#9F9F9F"/>
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tablayou_navi_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#9F9F9F" />
 
     </LinearLayout>
 

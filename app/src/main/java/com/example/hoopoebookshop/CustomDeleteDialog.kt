@@ -31,6 +31,4 @@ class CustomDeleteDialog(val context: Context, val item: ItemMainBinding) {
 
         }
     }
-
-
 }
