@@ -1,26 +1,30 @@
 package com.example.hoopoebookshop
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.hoopoebookshop.databinding.FragmentSecondBinding
 
 class SecondFragment : Fragment() {
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    lateinit var binding: FragmentSecondBinding
+    val cartDataList = mutableListOf<CartDataVO>()
+    lateinit var cartCustomAdapter: CartCustomAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_second, container, false)
-    }
+        binding = FragmentSecondBinding.inflate(inflater, container, false)
 
+        val linearLayoutManager = LinearLayoutManager(container?.context)
+        val cartCustomAdapter = CartCustomAdapter(cartDataList)
+        this.cartCustomAdapter = cartCustomAdapter
+        binding.recyclerView.layoutManager = linearLayoutManager
+        binding.recyclerView.adapter = cartCustomAdapter
+        return binding.root
+    }
 }
+

@@ -6,10 +6,10 @@
         android:id="@+id/menu_list"
         app:showAsAction="never"/>
     <item android:title="장바구니"
-        android:id="@+id/menu_open"
+        android:id="@+id/menu_cart"
         app:showAsAction="never"/>
     <item android:title="관심도서"
-        android:id="@+id/menu_load"
+        android:id="@+id/menu_interest"
         app:showAsAction="never"/>
     <item android:title="검색"
         android:id="@+id/menu_search"

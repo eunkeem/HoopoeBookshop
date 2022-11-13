@@ -1,12 +1,12 @@
 package com.example.hoopoebookshop
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import com.example.hoopoebookshop.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayoutMediator
@@ -32,8 +32,6 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         toggle.syncState()
 
-        ////////////////////////////
-
         val pagerAdapter = PagerAdapter(this)
         val title = mutableListOf<String>("도서목록", "장바구니", "관심도서")
         firstFragment = FirstFragment()
@@ -49,29 +47,28 @@ class MainActivity : AppCompatActivity() {
             tab.text = title.get(position)
         }.attach()
 
-//        binding.extendFloatingActionButton.shrink()
-//        binding.extendFloatingActionButton.setOnClickListener {
-//            when (binding.extendFloatingActionButton.isExtended) {
-//                true -> binding.extendFloatingActionButton.shrink()
-//                false -> binding.extendFloatingActionButton.extend()
-//            }
-//            Toast.makeText(applicationContext, "extend tab click", Toast.LENGTH_SHORT).show()
-//        }
+        binding.extendFloatingActionButton.setOnClickListener {
+            when (binding.extendFloatingActionButton.isExtended) {
+                true -> binding.extendFloatingActionButton.shrink()
+                false -> binding.extendFloatingActionButton.extend()
+            }
+            CustomDialog(binding.root.context, firstFragment).showDialog()
+        }
 
-//        binding.navigationview.setNavigationItemSelectedListener {
-//            when (it.itemId) {
-//                R.id.item_info -> {
-//                    Toast.makeText(applicationContext, "베스트셀러", Toast.LENGTH_SHORT).show()
-//                }
-//                R.id.item_report -> {
-//                    Toast.makeText(applicationContext, "관심도서", Toast.LENGTH_SHORT).show()
-//                }
-//                R.id.item_add -> {
-//                    Toast.makeText(applicationContext, "장바구니", Toast.LENGTH_SHORT).show()
-//                }
-//            }
-//            true
-//        }
+        binding.navigationview.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.item_info -> {
+                    Toast.makeText(applicationContext, "베스트셀러", Toast.LENGTH_SHORT).show()
+                }
+                R.id.item_report -> {
+                    Toast.makeText(applicationContext, "관심도서", Toast.LENGTH_SHORT).show()
+                }
+                R.id.item_add -> {
+                    Toast.makeText(applicationContext, "장바구니", Toast.LENGTH_SHORT).show()
+                }
+            }
+            true
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -84,29 +81,29 @@ class MainActivity : AppCompatActivity() {
                 Log.d("HoopoeBookshop", "${searchText}")
                 return true
             }
-
             override fun onQueryTextChange(newText: String?): Boolean {
                 return true
             }
         })
         return super.onCreateOptionsMenu(menu)
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toggle.onOptionsItemSelected(item)) {
             return true
         }
         when (item.itemId) {
             R.id.menu_list -> {
-                Toast.makeText(applicationContext, "save", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "도서목록", Toast.LENGTH_SHORT).show()
             }
             R.id.menu_search -> {
-                Toast.makeText(applicationContext, "search", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "검색", Toast.LENGTH_SHORT).show()
             }
-            R.id.menu_load -> {
-                Toast.makeText(applicationContext, "load", Toast.LENGTH_SHORT).show()
+            R.id.menu_cart -> {
+                Toast.makeText(applicationContext, "장바구니", Toast.LENGTH_SHORT).show()
             }
-            R.id.menu_open -> {
-                Toast.makeText(applicationContext, "open", Toast.LENGTH_SHORT).show()
+            R.id.menu_interest -> {
+                Toast.makeText(applicationContext, "관심도서", Toast.LENGTH_SHORT).show()
             }
         }
         return super.onOptionsItemSelected(item)

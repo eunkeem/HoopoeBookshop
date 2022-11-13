@@ -38,6 +38,5 @@
                 android:text="확인"/>
         </LinearLayout>
 
-
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

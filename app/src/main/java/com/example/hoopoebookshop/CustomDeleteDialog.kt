@@ -5,13 +5,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.WindowManager
 import com.example.hoopoebookshop.databinding.DialogDeleteBinding
-import com.example.hoopoebookshop.databinding.FragmentFirstBinding
-import com.example.hoopoebookshop.databinding.ItemMainBinding
 
-class CustomDeleteDialog(val context: Context, val item: ItemMainBinding) {
+class CustomDeleteDialog(val context: Context, val dAtaVO: DAtaVO) {
     val dialog = Dialog(context)
 
-    fun showDialog(){
+    fun showDialog() {
         val binding = DialogDeleteBinding.inflate(LayoutInflater.from(context))
         dialog.setContentView(binding.root)
 
@@ -23,12 +21,13 @@ class CustomDeleteDialog(val context: Context, val item: ItemMainBinding) {
         dialog.setCancelable(true)
         dialog.show()
 
-        binding.btnDeleteCancle.setOnClickListener{
+        binding.btnDeleteCancle.setOnClickListener {
             dialog.dismiss()
         }
 
-        binding.btnDeleteOk.setOnClickListener{
-
+        binding.btnDeleteOk.setOnClickListener {
+            (context as MainActivity).firstFragment.refreshRecyclerviewDrop(dAtaVO)
+            dialog.dismiss()
         }
     }
 }
