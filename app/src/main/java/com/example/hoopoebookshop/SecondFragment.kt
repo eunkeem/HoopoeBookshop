@@ -10,6 +10,7 @@ import com.example.hoopoebookshop.databinding.FragmentSecondBinding
 
 class SecondFragment : Fragment() {
     lateinit var binding: FragmentSecondBinding
+    val dAtaVO = mutableListOf<DAtaVO>()
     val cartDataList = mutableListOf<CartDataVO>()
     lateinit var cartCustomAdapter: CartCustomAdapter
 
@@ -25,6 +26,14 @@ class SecondFragment : Fragment() {
         binding.recyclerView.layoutManager = linearLayoutManager
         binding.recyclerView.adapter = cartCustomAdapter
         return binding.root
+    }
+
+    fun refreshRecyclerViewAdd(dAtaVO: DAtaVO) {
+        val picture = dAtaVO.picture
+        val sub = dAtaVO.sub
+        val price = dAtaVO.price
+        cartDataList.add(CartDataVO(picture, sub, price))
+        cartCustomAdapter.notifyDataSetChanged()
     }
 }
 

@@ -16,6 +16,7 @@ class CustomAdapter(val dataList: MutableList<DAtaVO>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
         val binding = ItemMainBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         val customViewHolder = CustomViewHolder(binding)
+
         customViewHolder.itemView.setOnClickListener {
             val position: Int = customViewHolder.bindingAdapterPosition
             val dAtaVO = dataList.get(position)
@@ -26,6 +27,12 @@ class CustomAdapter(val dataList: MutableList<DAtaVO>) :
             ).show()
         }
 
+        binding.btnCartItemMain.setOnClickListener{
+            val position: Int = customViewHolder.bindingAdapterPosition
+            val dataVO = dataList.get(position)
+            MoveToCartDialog(binding.root.context, dataVO).showDialog()
+            true
+        }
         customViewHolder.itemView.setOnLongClickListener {
             val position: Int = customViewHolder.bindingAdapterPosition
             val dataVO = dataList.get(position)
@@ -45,10 +52,6 @@ class CustomAdapter(val dataList: MutableList<DAtaVO>) :
         binding.tvAuthorItemMain.text = dataVO.author
         binding.tvPublisherItemMain.text = dataVO.publisher
 
-        binding.btnCartItemMain.setOnClickListener {
-            val firstFragment: FirstFragment? = null
-            firstFragment?.IntentForCart(dataVO)
-        }
     }
 
     class CustomViewHolder(val binding: ItemMainBinding) : RecyclerView.ViewHolder(binding.root) {

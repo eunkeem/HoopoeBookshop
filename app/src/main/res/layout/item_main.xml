@@ -45,7 +45,8 @@
                 android:layout_height="22sp"
                 app:srcCompat="@drawable/ic_shopping_cart"
                 android:layout_alignTop="@+id/imv_book_item_main"
-                android:layout_alignEnd="@id/tv_publisher_item_main"/>
+                android:layout_alignEnd="@id/tv_publisher_item_main"
+                android:backgroundTint="@color/white"/>
 
             <TextView
                 android:id="@+id/tv_price_item_main"

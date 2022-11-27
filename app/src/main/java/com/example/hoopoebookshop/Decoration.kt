@@ -21,7 +21,6 @@ class Decoration(val context: Context) : RecyclerView.ItemDecoration() {
     ) {
         super.getItemOffsets(outRect, view, parent, state)
         outRect.set(20, 20, 20, 0)
-        view.setBackgroundColor(Color.parseColor("white"))
-        ViewCompat.setElevation(view, 20.0f)
+
     }
 }

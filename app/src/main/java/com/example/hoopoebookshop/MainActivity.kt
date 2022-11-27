@@ -61,10 +61,10 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(applicationContext, "베스트셀러", Toast.LENGTH_SHORT).show()
                 }
                 R.id.item_report -> {
-                    Toast.makeText(applicationContext, "관심도서", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "장바구니", Toast.LENGTH_SHORT).show()
                 }
                 R.id.item_add -> {
-                    Toast.makeText(applicationContext, "장바구니", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "관심도서", Toast.LENGTH_SHORT).show()
                 }
             }
             true

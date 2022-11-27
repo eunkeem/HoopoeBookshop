@@ -1,12 +1,14 @@
 package com.example.hoopoebookshop
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.hoopoebookshop.databinding.FragmentFirstBinding
 
 class FirstFragment : Fragment() {
@@ -42,14 +44,11 @@ class FirstFragment : Fragment() {
         val customAdapter = CustomAdapter(dataList)
         this.customAdapter = customAdapter
 
-
-        binding.btnFloating.setOnClickListener {
-//       move to Top
-        }
-
         //리싸이클러뷰에 연결
         binding.recyclerView.layoutManager = linearLayoutManager
         binding.recyclerView.adapter = customAdapter
+
+
         //데코레이션 여기서 연걸
         binding.recyclerView.addItemDecoration(Decoration(requireContext()))
         return binding.root
@@ -66,30 +65,21 @@ class FirstFragment : Fragment() {
         dataList.remove(dataVO)
         customAdapter.notifyDataSetChanged()
     }
-
-    fun IntentForCart(dataVO: DAtaVO) {
-//        val intent = Intent(context, SecondFragment::class.java)
-//        val cartDataList = arrayListOf<CartDataVO>()
-//
-//        intent.apply {
-//            this.putExtra("picture",1)
-//            this.putExtra("sub", 2)
-//            this.putExtra("price", 3)
-//        }
-//        startActivity(intent)
-
-//        cartDataList.add(
-//            CartDataVO(
-//                dataVO.picture.toInt(),
-//                dataVO.sub.toString(),
-//                dataVO.price.toString()
-//            )
-//        )
-//        if(cartDataList !=null){
-//            intent.putExtra("cartDataList", cartDataList)
-//            startActivity(intent)
-//        }else{
-//            Toast.makeText(context, "cartDataList 오류", Toast.LENGTH_SHORT).show()
-//        }
+    private fun FragmentFirstBinding.setScrollListener() {
+        binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                if (!recyclerView.canScrollVertically(1)) {
+                    Log.d("SCROLL", "끝났음")
+                    btnFloating.visibility = View.VISIBLE
+                } else
+                    btnFloating.visibility = View.GONE
+            }
+        })
+    }
+    private fun FragmentFirstBinding.setPageUpListener() {
+        btnFloating.setOnClickListener {
+            recyclerView.smoothScrollToPosition(0)
+        }
     }
 }
